@@ -22,12 +22,7 @@ public:
 	bool tasksCompleted = false;
 	int32 taskQuantity = 8;
 
-	UFUNCTION(BlueprintCallable)
 	void taskArraySetReset();
-
-	UFUNCTION(BlueprintCallable)
 	void completitionCheck();
-
-	UFUNCTION(BlueprintCallable)
 	void taskStatusUpdater(int32 taskIndexNum);
 };
