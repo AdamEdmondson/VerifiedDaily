@@ -6,14 +6,22 @@
 #include "GameFramework/Actor.h"
 #include "alarmClockTask.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FTaskStatusUpdateSignature, int32, TaskIndex);
+
 UCLASS()
 class VERIFIEDDAILY_API AalarmClockTask : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
+public:		
 	// Sets default values for this actor's properties
 	AalarmClockTask();
+
+	UPROPERTY(BlueprintAssignable)
+	FTaskStatusUpdateSignature TaskStatusUpdateDelegate;
+
+	UFUNCTION(BlueprintCallable)
+	void CompletedTask();
 
 protected:
 	// Called when the game starts or when spawned
@@ -22,4 +30,5 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 };
