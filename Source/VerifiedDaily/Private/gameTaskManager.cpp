@@ -5,7 +5,6 @@
 #include "alarmClockTask.h"
 #include "Engine/Engine.h"
 
-// Sets default values
 AgameTaskManager::AgameTaskManager()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -74,7 +73,7 @@ void AgameTaskManager::completitionCheck()
 	}
 }
 
-//marks a specific task as completed by changing an element from false to true, 0 is task 1
+//marks a specific task as completed by changing an element from false to true, Index 0 is task 1
 void AgameTaskManager::taskStatusUpdater(int32 taskIndexNum)
 {
 
@@ -85,7 +84,7 @@ void AgameTaskManager::taskStatusUpdater(int32 taskIndexNum)
 
 		if (GEngine)
 		{
-			GEngine->AddOnScreenDebugMessage(2, 5.0f, FColor::White, FString::Printf(TEXT("Task %d is now %s"), taskList[taskIndexNum], taskList[taskIndexNum] ? TEXT("True") : TEXT("False")));
+			GEngine->AddOnScreenDebugMessage(2, 5.0f, FColor::White, FString::Printf(TEXT("Index %d is now %s"), taskIndexNum, taskList[taskIndexNum] ? TEXT("True") : TEXT("False")));
 		}
 	}
 	else if (GEngine)
