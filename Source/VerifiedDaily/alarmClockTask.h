@@ -23,6 +23,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void CompletedTask();
 
+	UPROPERTY(BlueprintReadWrite)
+	bool isAlarmTaskComplete = false;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

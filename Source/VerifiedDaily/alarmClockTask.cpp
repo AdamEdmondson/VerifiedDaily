@@ -26,5 +26,6 @@ void AalarmClockTask::Tick(float DeltaTime)
 // Broadcast to gameTaskManger for Array Update
 void AalarmClockTask::CompletedTask()
 {
+	isAlarmTaskComplete = true;
 	TaskStatusUpdateDelegate.Broadcast(0);
 }
