@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "gameTaskManager.generated.h"
 
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FcanEndRoundSignature, bool, canEnd);
 
 UCLASS()
@@ -35,12 +36,21 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void taskStatusUpdater(int32 taskIndexNum);
 
+	UFUNCTION(BlueprintCallable)
+	void dayEnd();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere)
 	class AalarmClockTask* alarmClockTaskPointer;
+
+	UPROPERTY(EditAnywhere)
+	class Adoor* doorOpenedPointer;
+
+	UPROPERTY(EditAnywhere)
+	int day;
 
 public:
 	// Called every frame

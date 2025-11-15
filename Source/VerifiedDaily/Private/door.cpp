@@ -15,16 +15,6 @@ Adoor::Adoor()
 void Adoor::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	if (doorCanEndPointer != nullptr)
-	{
-		doorCanEndPointer->canEndRoundDelegate.AddDynamic(this, &Adoor::checkCanEnd);
-
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(7, 5.0f, FColor::Green, FString::Printf(TEXT("Another Pointer Created")));
-		}
-	}
 
 }
 
@@ -35,10 +25,7 @@ void Adoor::Tick(float DeltaTime)
 
 }
 
-void Adoor::checkCanEnd(bool canEnd)
+void Adoor::openDoor()
 {
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(2, 5.0f, FColor::Green, FString::Printf(TEXT("I WORK!!!!!!")));
-	}
+	doorOpenedDelegate.Broadcast();
 }

@@ -4,8 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include <gameTaskManager.h>
 #include "door.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FdoorOpenedSignature);
 
 UCLASS()
 class VERIFIEDDAILY_API Adoor : public AActor
@@ -16,15 +17,16 @@ public:
 	// Sets default values for this actor's properties
 	Adoor();
 
+	UPROPERTY(BlueprintAssignable)
+	FdoorOpenedSignature doorOpenedDelegate;
+
 	UFUNCTION(BlueprintCallable)
-	void checkCanEnd(bool canEnd);
+	void openDoor();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(EditAnywhere)
-	AgameTaskManager* doorCanEndPointer;
 
 public:	
 	// Called every frame

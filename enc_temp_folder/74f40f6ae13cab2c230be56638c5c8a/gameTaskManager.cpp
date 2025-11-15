@@ -107,14 +107,12 @@ void AgameTaskManager::dayEnd()
 {
 	if (tasksCompleted == true)
 	{
+		day++;
+
 		if (GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(2, 5.0f, FColor::Green, FString::Printf(TEXT("Day Has Ended")));
 		}
-
-		day++;
-		taskArraySetReset();
-
 	}
 	else
 	{
@@ -123,4 +121,5 @@ void AgameTaskManager::dayEnd()
 			GEngine->AddOnScreenDebugMessage(2, 5.0f, FColor::Red, FString::Printf(TEXT("Tasks Not Completed")));
 		}
 	}
+
 }
