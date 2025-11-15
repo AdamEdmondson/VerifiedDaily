@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "gameTaskManager.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FcanEndRoundSignature, bool, canEnd);
+
 UCLASS()
 class VERIFIEDDAILY_API AgameTaskManager : public AActor
 {
@@ -15,11 +17,14 @@ public:
 	// Sets default values for this actor's properties
 	AgameTaskManager();
 
+	UPROPERTY(BlueprintAssignable)
+	FcanEndRoundSignature canEndRoundDelegate;
+
 	UPROPERTY(VisibleAnywhere)
 	TArray<bool> taskList;
 
 	bool tasksCompleted = false;
-	int32 taskQuantity = 8;
+	int32 taskQuantity = 1;
 
 	UFUNCTION(BlueprintCallable)
 	void taskArraySetReset();

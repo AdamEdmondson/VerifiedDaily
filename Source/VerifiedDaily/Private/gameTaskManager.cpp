@@ -70,6 +70,8 @@ void AgameTaskManager::completitionCheck()
 		{
 			GEngine->AddOnScreenDebugMessage(1, 5.0f, FColor::Green, FString::Printf(TEXT("Tasks All Completed")));
 		}
+
+		canEndRoundDelegate.Broadcast(true);
 	}
 }
 
@@ -93,4 +95,3 @@ void AgameTaskManager::taskStatusUpdater(int32 taskIndexNum)
 	}
 
 }
-

@@ -21,10 +21,16 @@ public:
 	FTaskStatusUpdateSignature TaskStatusUpdateDelegate;
 
 	UFUNCTION(BlueprintCallable)
-	void CompletedTask();
+	void completedTask();
+
+	UFUNCTION(BlueprintCallable)
+	void newDay();
 
 	UPROPERTY(BlueprintReadWrite)
 	bool isAlarmTaskComplete = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	int taskComplexity = 0;
 
 protected:
 	// Called when the game starts or when spawned
