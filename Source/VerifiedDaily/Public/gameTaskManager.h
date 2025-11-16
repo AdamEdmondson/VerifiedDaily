@@ -9,6 +9,8 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FcanEndRoundSignature, bool, canEnd);
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FresetTasksSignature);
+
 UCLASS()
 class VERIFIEDDAILY_API AgameTaskManager : public AActor
 {
@@ -20,6 +22,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FcanEndRoundSignature canEndRoundDelegate;
+
+	UPROPERTY(BlueprintAssignable)
+	FresetTasksSignature resetTasksDelegate;
 
 	UPROPERTY(VisibleAnywhere)
 	TArray<bool> taskList;

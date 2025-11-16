@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "alarmClockTask.h"
+#include <gameTaskManager.h>
 
 // Sets default values
 AalarmClockTask::AalarmClockTask()
@@ -14,6 +15,10 @@ void AalarmClockTask::BeginPlay()
 {
 	Super::BeginPlay();
 
+	if (taskResetPointer != nullptr)
+	{
+		taskResetPointer->resetTasksDelegate.AddDynamic(this, &AalarmClockTask::newDay);
+	}
 }
 
 // Called every frame
