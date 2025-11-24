@@ -11,6 +11,8 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FcanEndRoundSignature, bool, canEnd)
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FresetTasksSignature);
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FverifyTaskSignature);
+
 UCLASS()
 class VERIFIEDDAILY_API AgameTaskManager : public AActor
 {
@@ -25,6 +27,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FresetTasksSignature resetTasksDelegate;
+
+	UPROPERTY(BlueprintAssignable)
+	FverifyTaskSignature verifyTaskDelegate;
 
 	UPROPERTY(VisibleAnywhere)
 	TArray<bool> taskList;
@@ -44,6 +49,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void dayEnd();
 
+	UFUNCTION(BlueprintCallable)
+	void runVerify();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -56,6 +64,9 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 	int day;
+
+	UPROPERTY(EditAnywhere)
+	int verifyAmount;
 
 public:
 	// Called every frame

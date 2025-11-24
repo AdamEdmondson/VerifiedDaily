@@ -17,12 +17,12 @@ AgameTaskManager::AgameTaskManager()
 void AgameTaskManager::BeginPlay()
 {
 	Super::BeginPlay();
-	
 
 	//init setup at start of the game
+	day = 1;
+
 	taskArraySetReset();
 	completitionCheck();
-	day = 1;
 
 	if (alarmClockTaskPointer != nullptr)
 	{
@@ -57,6 +57,17 @@ void AgameTaskManager::taskArraySetReset()
 	{
 		GEngine->AddOnScreenDebugMessage(3, 5.0f, FColor::White, FString::Printf(TEXT("%d Tasks Created, Array has been reset"), taskList.Num()));
 	}
+
+	verifyAmount = day;
+}
+
+void AgameTaskManager::runVerify()
+{
+	if (verifyAmount > 1)
+	{
+		verifyTaskDelegate.Broadcast();
+		verifyAmount--;
+	}
 }
 
 //checks whether all tasks have been completed
@@ -84,10 +95,10 @@ void AgameTaskManager::completitionCheck()
 //marks a specific task as completed by changing an element from false to true, Index 0 is task 1
 void AgameTaskManager::taskStatusUpdater(int32 taskIndexNum)
 {
-
 	if (taskList.IsValidIndex(taskIndexNum))
 	{
 		taskList[taskIndexNum] = true;
+		runVerify();
 		completitionCheck();
 
 		if (GEngine)
@@ -113,6 +124,7 @@ void AgameTaskManager::dayEnd()
 		}
 
 		day++;
+
 		taskArraySetReset();
 		resetTasksDelegate.Broadcast();
 	}

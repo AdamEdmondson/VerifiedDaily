@@ -29,8 +29,6 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	bool isAlarmTaskComplete = false;
 
-	UPROPERTY(BlueprintReadWrite)
-	int taskComplexity = 0;
 
 protected:
 	// Called when the game starts or when spawned

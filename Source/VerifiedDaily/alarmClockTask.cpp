@@ -38,5 +38,4 @@ void AalarmClockTask::completedTask()
 void AalarmClockTask::newDay()
 {
 	isAlarmTaskComplete = false;
-	taskComplexity++;
 }
