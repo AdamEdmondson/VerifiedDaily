@@ -72,14 +72,8 @@ void AgameTaskManager::lostGame()
 
 void AgameTaskManager::runVerify()
 {
-
 	if (verifyAmount > 1)
 	{
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(6, 5.0f, FColor::Red, FString::Printf(TEXT("VERIFY ACTIVE")));
-		}
-
 		verifyTaskDelegate.Broadcast();
 		verifyAmount--;
 	}
@@ -112,8 +106,8 @@ void AgameTaskManager::taskStatusUpdater(int32 taskIndexNum)
 {
 	if (taskList.IsValidIndex(taskIndexNum))
 	{
-		runVerify();
 		taskList[taskIndexNum] = true;
+		runVerify();
 		completitionCheck();
 
 		if (GEngine)
