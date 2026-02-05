@@ -35,7 +35,7 @@ public:
 	TArray<bool> taskList;
 
 	bool tasksCompleted = false;
-	int32 taskQuantity = 1;
+	int32 taskQuantity = 2;
 
 	UFUNCTION(BlueprintCallable)
 	void taskArraySetReset();

@@ -35,7 +35,7 @@ public:
 	TArray<bool> taskList;
 
 	bool tasksCompleted = false;
-	int32 taskQuantity = 2;
+	int32 taskQuantity = 3; //update this to the current number of tasks in the game
 
 	UFUNCTION(BlueprintCallable)
 	void taskArraySetReset();
